@@ -1,0 +1,19 @@
+{
+  "name": "webjep-server",
+  "version": "1.0.0",
+  "description": "Server-side code for WebJep! web application",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sombreroman55/webjep.git"
+  },
+  "author": "Andrew Roberts",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/sombreroman55/webjep/issues"
+  },
+  "homepage": "https://github.com/sombreroman55/webjep#readme"
+}
