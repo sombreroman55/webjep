@@ -1,4 +1,4 @@
-import Player from './player'
+import Player from './Player'
 
 // The main game state
 export default class GameState {
