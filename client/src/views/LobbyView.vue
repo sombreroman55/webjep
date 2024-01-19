@@ -12,10 +12,23 @@
     host.value = data.host
   }
 
-  const socket = ref(new WebSocket('ws://localhost:8080'))
+  const socket = ref(new WebSocket('ws://localhost:8080/echo'))
+
+  socket.value.onopen = () => {
+    console.log('WebSocket Client Connected')
+  }
+
+  socket.value.onmessage = (message) => {
+    console.log(message)
+  }
+
+  function send(message: string) {
+    socket.value.send(message)
+  }
 </script>
 
 <template>
   <h1>Lobby</h1>
   <h2>Host: {{ host }}</h2>
+  <button @click="send('Hello')">Send</button>
 </template>
