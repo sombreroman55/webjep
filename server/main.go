@@ -6,23 +6,45 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/websocket"
 )
 
-var upgrader = websocket.Upgrader{} // use default options
-var connections = make(map[*websocket.Conn]bool)
+type ServerError struct {
+  Message string
+}
 
-func echo(w http.ResponseWriter, r *http.Request) {
-    upgrader.CheckOrigin = func(r *http.Request) bool { return true }
-	c, err := upgrader.Upgrade(w, r, nil)
+func (e *ServerError) Error() string {
+  return e.Message
+}
+
+var jepUpgrader = websocket.Upgrader{
+	CheckOrigin: func(r *http.Request) bool {
+		origin := r.Header.Get("Origin")
+		return origin == "http://localhost:5173"
+	},
+}
+
+var rtcUpgrader = websocket.Upgrader{
+	CheckOrigin: func(r *http.Request) bool {
+		origin := r.Header.Get("Origin")
+		return origin == "http://localhost:5173"
+	},
+}
+
+var connections = make(map[*websocket.Conn]bool)
+var activeGames = make(map[string]GameState)
+
+func jepSocket(w http.ResponseWriter, r *http.Request) {
+	c, err := jepUpgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Print("upgrade:", err)
 		return
 	}
 	defer c.Close()
 
-    connections[c] = true
+	connections[c] = true
 
 	for {
 		mt, message, err := c.ReadMessage()
@@ -32,32 +54,55 @@ func echo(w http.ResponseWriter, r *http.Request) {
 		}
 		log.Printf("recv: %s", message)
 
-        for conn := range connections {
-            err = conn.WriteMessage(mt, message)
-            if err != nil {
-                log.Println("write:", err)
-                break
-            }
-        }
+		for conn := range connections {
+			err = conn.WriteMessage(mt, message)
+			if err != nil {
+				log.Println("write:", err)
+				break
+			}
+		}
+	}
+}
+
+func rtcSocket(w http.ResponseWriter, r *http.Request) {
+	c, err := rtcUpgrader.Upgrade(w, r, nil)
+	if err != nil {
+		log.Print("upgrade:", err)
+		return
+	}
+	defer c.Close()
+
+	connections[c] = true
+
+	for {
+		mt, message, err := c.ReadMessage()
+		if err != nil {
+			log.Println("read:", err)
+			break
+		}
+		log.Printf("recv: %s", message)
+
+		for conn := range connections {
+			err = conn.WriteMessage(mt, message)
+			if err != nil {
+				log.Println("write:", err)
+				break
+			}
+		}
 	}
 }
 
 func logMw(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		fmt.Println(r.URL.Path)
+		log.Printf("%s: %s\n", r.Method, r.URL.Path)
 		next.ServeHTTP(w, r)
 	})
 }
 
-// TODO: Print the contents of the file to the console
 func handleCluesPost(w http.ResponseWriter, r *http.Request) {
-	r.ParseMultipartForm(32 << 20)
-	file, _, _ := r.FormFile("clues")
-	defer file.Close()
-	fmt.Println("Uploaded File contents:")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Content-Type", "application/json")
-	w.Write([]byte(`{"status": "ok"}`))
+	game := CreateNewGame(r)
+	activeGames[game.Id] = game
+	w.Write([]byte(`{"status": "ok", "gameId": "` + game.Id + `"}`))
 	fmt.Println(r.Form)
 }
 
@@ -67,8 +112,6 @@ func handleHostGet(w http.ResponseWriter, r *http.Request) {
 		Host string `json:"host"`
 	}{host}
 	host_json, _ := json.Marshal(host_struct)
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("Content-Type", "application/json")
 	w.Write(host_json)
 }
 
@@ -76,12 +119,16 @@ func main() {
 	fmt.Println("Hello from WebJep!")
 
 	r := mux.NewRouter()
-	r.HandleFunc("/echo", echo)
+	r.HandleFunc("/jep", jepSocket)
+	r.HandleFunc("/rtc", rtcSocket)
 	api_router := r.PathPrefix("/api").Subrouter()
 	api_router.HandleFunc("/clues", handleCluesPost).Methods("POST")
 	api_router.HandleFunc("/host", handleHostGet).Methods("GET")
 	r.Use(logMw)
 
-	http.Handle("/", r)
+	corsOptions := handlers.AllowedOrigins([]string{"http://localhost:5173"})
+	corsHandler := handlers.CORS(corsOptions)
+
+	http.Handle("/", corsHandler(r))
 	http.ListenAndServe(":8080", nil)
 }

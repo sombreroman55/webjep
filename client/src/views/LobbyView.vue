@@ -1,29 +1,22 @@
 <script setup lang="ts">
-  import { ref, onMounted } from 'vue'
+  import { ref, onMounted, onUnmounted } from 'vue'
+  import { useJepSocketStore } from '@/stores/jepSocket';
   const host = ref('')
+  const { connect, send, disconnect } = useJepSocketStore()
 
   onMounted(async () => {
     await getHost()
-  })
+    connect();
+  });
+
+  onUnmounted(() => {
+    disconnect();
+  });
 
   async function getHost() {
     const response = await fetch('http://localhost:8080/api/host')
     const data = await response.json()
     host.value = data.host
-  }
-
-  const socket = ref(new WebSocket('ws://localhost:8080/echo'))
-
-  socket.value.onopen = () => {
-    console.log('WebSocket Client Connected')
-  }
-
-  socket.value.onmessage = (message) => {
-    console.log(message)
-  }
-
-  function send(message: string) {
-    socket.value.send(message)
   }
 </script>
 
