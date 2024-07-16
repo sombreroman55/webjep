@@ -9,6 +9,6 @@
 <div>
   <h2>Round {roundNumber}</h2>
   {#each round.categories as category, i}
-    <CategoryBuilder category={category} categoryNumber={i+1} />
+    <CategoryBuilder category={category} roundNumber={roundNumber} categoryNumber={i+1} />
   {/each}
 </div>

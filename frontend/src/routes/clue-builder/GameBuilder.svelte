@@ -22,4 +22,3 @@
 {/each}
 <FinalRoundBuilder final={game.finalRound} />
 <button on:click={downloadGame}>Download Clues</button>
-<!-- TODO: Validate and create json export of clue data entered by user -->

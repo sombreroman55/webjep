@@ -1,2 +1,7 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<h1>Welcome to Webjep!</h1>
+
+<div style="display:flex; flex-direction:column">
+<a href="/game">make new online game</a>
+<a href="/local-game">make new local game</a>
+<a href="/clue-builders">clue builder</a>
+</div>
