@@ -1,11 +1,10 @@
 <script lang="ts">
 	import type { Game } from '$lib/Clues';
-	import Podium from '$lib/components/Podium.svelte';
-	import type Player from '$lib/Player';
-	import LocalGameView from './LocalGameView.svelte';
+	import GameView from '$lib/components/GameView.svelte';
+	// import type Player from '$lib/Player';
 
 	let game: Game | null = null;
-	let players: Player[] = [{ name: 'test', score: 123 }];
+	// let players: Player[] = [{ name: 'test', score: 123 }];
 
 	async function loadClues() {
 		const files = (<HTMLInputElement>document.getElementById('localLoad')).files;
@@ -32,7 +31,6 @@
 		<label>Load clues for game <input type="file" name="localLoad" id="localLoad" /></label>
 		<button id="localLoadButton" on:click={loadClues}>Load clue file</button>
 	{:else}
-        <p>{JSON.stringify(game)}</p>
-		<LocalGameView {game} />
+		<GameView {game} />
 	{/if}
 </div>

@@ -34,7 +34,7 @@ func serveWebjep() {
 	e.Use(middleware.Logger())
 	e.Static("/", "site/static")
 	e.GET("/", handleHomeGet)
-	e.POST("/localgame", handleLocalGamePost)
+	e.POST("/localgame", handleLocalGamePost)  // TBD: Do I need this?
 	e.POST("/game", handleGamePost)
 
 	e.Logger.Fatal(e.Start(":8000"))
