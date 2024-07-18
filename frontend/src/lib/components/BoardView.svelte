@@ -14,6 +14,6 @@
 <style>
 	.game-board {
 		display: grid;
-		grid-template-columns: 16.67% 16.67% 16.67% 16.67% 16.67% 16.67%;
+		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 	}
 </style>

@@ -8,7 +8,7 @@
 </script>
 
 <div class="category">
-	<div>{category.title}</div>
+	<div><h2>{category.title}</h2></div>
 	{#each category.clues as clue}
 		<div>${clue.value}</div>
 	{/each}
@@ -17,5 +17,6 @@
 <style>
 	.category {
 		display: grid;
+		grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 	}
 </style>

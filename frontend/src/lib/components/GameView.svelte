@@ -6,11 +6,7 @@
 
 	export let game: Game;
 	let round: Round = game.rounds[0];
-	let players: Player[] = [
-		{ name: 'fart', score: 123 },
-		{ name: 'shart', score: 234 },
-		{ name: 'mart', score: 345 }
-	];
+	let players: Player[] = [];
 
 	function nextRound() {
 		round = game.rounds[1];
@@ -25,6 +21,6 @@
 <style>
 	.game-view {
 		display: grid;
-		grid-template-rows: 80% 20%;
+		grid-template-rows: 4fr 1fr;
 	}
 </style>

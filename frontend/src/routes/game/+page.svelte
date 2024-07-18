@@ -27,13 +27,14 @@
 
 <div>
 	{#if !game}
-		<h1>local game</h1>
+		<h1>online game</h1>
 		<div class="tutorial">
-			local games are completely hosted in your browser. no data gets sent to the server, not even
-			the clues you load below. there is no need for videos on the podium or for a host podium. this
-			is designed for games where you have everyone in the room and just need a good layout to show
-			the clues and the scores. this is the best way to play. load your clues below to get started.
-			have fun :)
+			online games connect you with friends over the internet to play a round of jep. by creating a
+			game, you are the host of that game. uploading clues will create a game on the server and send
+			you a link to give to friends. podiums have video chat capability to join and play in a video
+			chat setting, all built into webjep. as host, you will be able to adjust player scores, though
+			the server will determine the winner of the buzzer. upload your clues below to create a room
+			and have fun hosting your friends :)
 		</div>
 		<label>Load clues for game <input type="file" name="localLoad" id="localLoad" /></label>
 		<button id="localLoadButton" on:click={loadClues}>Load clue file</button>
