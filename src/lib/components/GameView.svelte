@@ -5,16 +5,32 @@
 	import PlayerBarView from './PlayerBarView.svelte';
 
 	export let game: Game;
+	export let players: Player[];
+	let finalRound: boolean = false;
+	let roundNum = 0;
 	let round: Round = game.rounds[0];
-	let players: Player[] = [];
+
+	$: if (noCluesLeft()) {
+		nextRound();
+	}
+
+	function noCluesLeft(): boolean {
+		return true;
+	}
 
 	function nextRound() {
-		round = game.rounds[1];
+		roundNum++;
+		if (roundNum < 2) round = game.rounds[roundNum];
+		else finalRound = true;
 	}
 </script>
 
 <div class="game-view">
-	<BoardView {round} />
+	{#if !finalRound}
+		<BoardView {round} />
+	{:else}
+		<BoardView {round} />
+	{/if}
 	<PlayerBarView {players} />
 </div>
 
