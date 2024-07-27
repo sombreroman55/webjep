@@ -11,7 +11,7 @@
 		let playerInput = <HTMLInputElement>document.getElementById('newPlayerName');
 		let playerName = playerInput.value;
 		let newPlayer: Player = { name: playerName, score: 0, isHost: false };
-        players = [...players, newPlayer];
+		players = [...players, newPlayer];
 		playerInput.value = '';
 	}
 
@@ -48,8 +48,8 @@
 			local games are completely hosted in your browser. no data gets sent to the server, not even
 			the clues you load below. there is no need for videos on the podium or for a host podium. this
 			is designed for games where you have everyone in the room and just need a good layout to show
-			the clues and the scores. this is the best way to play. load your clues below to get started.
-			have fun :)
+			the clues and the scores. the game will randomly assign daily double clues automatically in
+			each round. this is the best way to play. load your clues below to get started. have fun :)
 		</div>
 		<label>Load clues for game <input type="file" name="localLoad" id="localLoad" /></label>
 		<button id="localLoadButton" on:click={loadClues}>Load clue file</button>
@@ -57,7 +57,7 @@
 		<h1>local game</h1>
 		<div class="tutorial">add players to your game</div>
 		<div>
-			current players: {players.map(p => p.name).join(',')}
+			current players: {players.map((p) => p.name).join(',')}
 		</div>
 		<label>name: <input name="newPlayerName" id="newPlayerName" /></label>
 		<button on:click={addPlayer}>add player</button>

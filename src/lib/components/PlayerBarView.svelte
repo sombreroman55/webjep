@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type Player from '$lib/Player';
-	import Podium from './Podium.svelte';
+	import Podium from '$lib/components/podium/Podium.svelte';
 
 	export let players: Player[];
 </script>

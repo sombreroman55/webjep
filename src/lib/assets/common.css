@@ -1,0 +1,18 @@
+.shadow {
+  text-shadow:
+    1px 1px black,
+    2px 2px black,
+    3px 3px black,
+    4px 4px black;
+}
+
+.jep-blue {
+  background-image: linear-gradient(#060ce9, #383ded);
+}
+
+
+.box-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -15,7 +15,7 @@
 	}
 
 	function noCluesLeft(): boolean {
-		return true;
+      return round.categories.every(c => (c.clues.every(q => q.value == 0)));
 	}
 
 	function nextRound() {
@@ -36,6 +36,8 @@
 
 <style>
 	.game-view {
+        width: 98vw;
+        height: 98vh;
 		display: grid;
 		grid-template-rows: 4fr 1fr;
 	}
