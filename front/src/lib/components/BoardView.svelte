@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Round } from '$lib/Clues';
+	import type { Round } from '$lib/types';
 	import CategoryView from './CategoryView.svelte';
     import ClueView from './ClueView.svelte';
 	import { currentClue, clueActive } from '$lib/gameStore';

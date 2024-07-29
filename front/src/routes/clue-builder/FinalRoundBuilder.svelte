@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { FinalRound } from '$lib/Clues';
+	import type { FinalRound } from '$lib/types';
 
 	export let final: FinalRound;
 </script>

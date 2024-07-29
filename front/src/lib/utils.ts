@@ -1,28 +1,4 @@
-export interface Clue {
-  question: string;
-  answer: string;
-  value: number;
-}
-
-export interface Category {
-  title: string;
-  clues: Clue[];
-}
-
-export interface Round {
-  categories: Category[];
-}
-
-export interface FinalRound {
-  category: string;
-  question: string;
-  answer: string;
-}
-
-export interface Game {
-  rounds: Round[];
-  finalRound: FinalRound;
-}
+import type { Game } from "$lib/types";
 
 export function newGame(): Game {
   return {
@@ -35,27 +11,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 200,
               },
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 600,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1000,
               },
             ]
           },
@@ -65,27 +36,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 200,
               },
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 600,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1000,
               },
             ]
           },
@@ -95,27 +61,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 200,
               },
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 600,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1000,
               },
             ]
           },
@@ -125,27 +86,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 200,
               },
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 600,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1000,
               },
             ]
           },
@@ -155,27 +111,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 200,
               },
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 600,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1000,
               },
             ]
           },
@@ -185,27 +136,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 200,
               },
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 600,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1000,
               },
             ]
           },
@@ -219,27 +165,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1200,
               },
               {
                 question: "",
                 answer: "",
-                value: 1600,
               },
               {
                 question: "",
                 answer: "",
-                value: 2000,
               },
             ]
           },
@@ -249,27 +190,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1200,
               },
               {
                 question: "",
                 answer: "",
-                value: 1600,
               },
               {
                 question: "",
                 answer: "",
-                value: 2000,
               },
             ]
           },
@@ -279,27 +215,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1200,
               },
               {
                 question: "",
                 answer: "",
-                value: 1600,
               },
               {
                 question: "",
                 answer: "",
-                value: 2000,
               },
             ]
           },
@@ -309,27 +240,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1200,
               },
               {
                 question: "",
                 answer: "",
-                value: 1600,
               },
               {
                 question: "",
                 answer: "",
-                value: 2000,
               },
             ]
           },
@@ -339,27 +265,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1200,
               },
               {
                 question: "",
                 answer: "",
-                value: 1600,
               },
               {
                 question: "",
                 answer: "",
-                value: 2000,
               },
             ]
           },
@@ -369,27 +290,22 @@ export function newGame(): Game {
               {
                 question: "",
                 answer: "",
-                value: 400,
               },
               {
                 question: "",
                 answer: "",
-                value: 800,
               },
               {
                 question: "",
                 answer: "",
-                value: 1200,
               },
               {
                 question: "",
                 answer: "",
-                value: 1600,
               },
               {
                 question: "",
                 answer: "",
-                value: 2000,
               },
             ]
           },

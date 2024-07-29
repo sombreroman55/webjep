@@ -2,6 +2,7 @@
 	import { redirect } from '@sveltejs/kit';
 
 	async function sendClues() {
+      console.log("Calling send clues");
 		const files = (<HTMLInputElement>document.getElementById('onlineLoad')).files;
 		if (!files || files.length == 0) {
 			// TODO: Do something
@@ -13,10 +14,14 @@
 			return;
 		}
 		const text = await selectedFile.text();
-      var formData = new FormData();
-      formData.append("clues", text);
-		const response = await fetch("/new-game", { method: 'post', body: formData });
-		console.log(response);
+		// TODO: try-catch this
+
+		const response = await fetch('http://localhost:8000/api/new-game', {
+			method: 'POST',
+			body: text
+		});
+
+      console.log(response);
 	}
 </script>
 
@@ -37,7 +42,7 @@
 		the server will determine the winner of the buzzer. upload your clues below to create a room and
 		have fun hosting your friends :)
 	</div>
-	<form method="POST" action="/new-game" on:submit|preventDefault={sendClues}>
+	<form method="POST" on:submit|preventDefault={sendClues}>
 		<label>Load clues for game <input type="file" name="onlineLoad" id="onlineLoad" /></label>
 		<input type="submit" value="Load clue file" />
 	</form>

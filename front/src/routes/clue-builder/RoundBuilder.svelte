@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Round } from '$lib/Clues';
+	import type { Round } from '$lib/types';
 	import CategoryBuilder from './CategoryBuilder.svelte';
 
 	export let round: Round;

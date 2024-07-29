@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Game } from '$lib/Clues';
+	import type { Game } from '$lib/types';
 	import FinalRoundBuilder from './FinalRoundBuilder.svelte';
 	import RoundBuilder from './RoundBuilder.svelte';
 

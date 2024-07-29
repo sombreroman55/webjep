@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Clue } from '$lib/Clues';
+	import type { Clue } from '$lib/types';
 
     export let roundNumber: number;
 	export let categoryNumber: number;

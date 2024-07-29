@@ -1,5 +1,5 @@
 import { writable } from "svelte/store";
-import type { Clue } from "$lib/Clues";
+import type { Clue } from "$lib/types";
 
 const defaultClue: Clue = {
   question: "",

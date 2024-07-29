@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Category } from '$lib/Clues';
+	import type { Category } from '$lib/types';
 	import ClueBuilder from './ClueBuilder.svelte';
 
     export let roundNumber: number;

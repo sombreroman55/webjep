@@ -1,23 +1,25 @@
 <script lang="ts">
-import { scale } from 'svelte/transition';
-	import type { Clue } from '$lib/Clues';
+	// import { scale } from 'svelte/transition';
+	import type { Clue } from '$lib/types';
 	import { resetClue } from '$lib/gameStore';
-    import "$lib/assets/common.css";
+	import '$lib/assets/common.css';
 
 	export let clue: Clue;
 	let showAnswer = false;
+
+	// TODO: Make custom clue reveal animation
 
 	function revealAnswer() {
 		if (!showAnswer) {
 			showAnswer = true;
 		} else {
-            clue.value = 0;
+			clue.answered = true;
 			resetClue();
 		}
 	}
 </script>
 
-<div transition:scale={{duration: 750}} class="jep-blue" on:click={revealAnswer}>
+<div class="jep-blue" on:click={revealAnswer}>
 	<p>{clue.question}</p>
 	{#if showAnswer}
 		<hr />

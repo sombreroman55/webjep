@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Category, Clue } from '$lib/Clues';
+	import type { Category, Clue } from '$lib/types';
 	import { currentClue, clueActive } from '$lib/gameStore';
     import "$lib/assets/common.css";
 
@@ -17,7 +17,7 @@
 	</div>
 	{#each category.clues as clue}
 		<div class="jep-blue shadow board-square box-center">
-			{#if clue.value > 0}
+			{#if !clue.answered}
 				<div on:click={() => setCurrentClue(clue)}>
 					<b>${clue.value}</b>
 				</div>

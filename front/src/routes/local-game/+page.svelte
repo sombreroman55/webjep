@@ -1,16 +1,15 @@
 <script lang="ts">
-	import type { Game } from '$lib/Clues';
+	import type { Category, Clue, Round, Session, Player } from '$lib/types';
 	import GameView from '$lib/components/GameView.svelte';
-	import type Player from '$lib/Player';
 
-	let game: Game | null = null;
+	let session: Session | null = null;
 	let ready: boolean = false;
 	let players: Player[] = [];
 
 	function addPlayer() {
 		let playerInput = <HTMLInputElement>document.getElementById('newPlayerName');
 		let playerName = playerInput.value;
-		let newPlayer: Player = { name: playerName, score: 0, isHost: false };
+		let newPlayer: Player = { name: playerName, score: 0, isHost: false, videoEnabled: false };
 		players = [...players, newPlayer];
 		playerInput.value = '';
 	}
@@ -28,14 +27,26 @@
 		}
 		const text = await selectedFile.text();
 		// TODO: try-catch this
-		const gameObj = JSON.parse(text);
-		// TODO: Validate clues
-		game = gameObj as Game;
+		const sessionObj = JSON.parse(text) as Session;
+		const gameObj = sessionObj.game;
+
+		for (var i = 0; i < gameObj.rounds.length; i++) {
+			var r: Round = gameObj.rounds[i];
+			for (var j = 0; j < r.categories.length; j++) {
+				var c: Category = r.categories[j];
+				for (var k = 0; k < c.clues.length; k++) {
+					var q: Clue = c.clues[k];
+					q.value = (i + 1) * sessionObj.settings.baseClueValue * (k + 1);
+					q.answered = false;
+				}
+			}
+		}
+		session = sessionObj;
 	}
 </script>
 
 <div>
-	{#if !game}
+	{#if !session}
 		<nav>
 			<a href="/">home</a>
 			<a href="/clue-builder">clue builder</a>
@@ -65,7 +76,7 @@
 			<button on:click={() => (ready = true)}>start game</button>
 		</div>
 	{:else}
-		<GameView {game} {players} />
+		<GameView game={session.game} {players} />
 	{/if}
 </div>
 

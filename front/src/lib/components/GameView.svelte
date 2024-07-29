@@ -1,6 +1,5 @@
 <script lang="ts">
-	import type { Game, Round } from '$lib/Clues';
-	import type Player from '$lib/Player';
+	import type { Game, Round, Player } from '$lib/types';
 	import BoardView from './BoardView.svelte';
 	import PlayerBarView from './PlayerBarView.svelte';
 
@@ -15,7 +14,7 @@
 	}
 
 	function noCluesLeft(): boolean {
-      return round.categories.every(c => (c.clues.every(q => q.value == 0)));
+      return round.categories.every(c => (c.clues.every(q => q.answered)));
 	}
 
 	function nextRound() {
