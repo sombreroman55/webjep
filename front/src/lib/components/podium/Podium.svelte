@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type Player from '$lib/Player';
+	import type { Player } from '$lib/types';
 	import ScoreBar from '$lib/components/podium/ScoreBar.svelte';
     import '$lib/assets/common.css'
 	export let player: Player;

@@ -36,7 +36,12 @@
 				var c: Category = r.categories[j];
 				for (var k = 0; k < c.clues.length; k++) {
 					var q: Clue = c.clues[k];
-					q.value = (i + 1) * sessionObj.settings.baseClueValue * (k + 1);
+					var bcv = sessionObj.settings.baseClueValue;
+					var irm = sessionObj.settings.interRoundMultiplier;
+					var ici = sessionObj.settings.interClueInterval;
+					var crbv = Math.floor(bcv + i * bcv * irm)
+					var ccv = Math.floor(crbv + k * crbv * ici)
+					q.value = ccv;
 					q.answered = false;
 				}
 			}

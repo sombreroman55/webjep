@@ -7,12 +7,12 @@ import (
 	_ "github.com/google/uuid"
 	_ "github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
-	_ "github.com/labstack/echo/v4/middleware"
+	"github.com/labstack/echo/v4/middleware"
 	log "github.com/sirupsen/logrus"
 )
 
 func handleNewGamePost(c echo.Context) error {
-	log.Info(c.Request().Form)
+	log.Info("Got new game POST")
 	m := make(map[string]interface{})
 	err := json.NewDecoder(c.Request().Body).Decode(&m)
 	if err != nil {
@@ -36,9 +36,10 @@ func main() {
 	log.SetLevel(log.InfoLevel)
 
 	e := echo.New()
+	e.Use(middleware.CORS())
 
-	e.POST("/newgame", handleNewGamePost)
-	e.GET("/webjepws", handleWebjepWebsocketGet)
+	e.POST("/api/new-game", handleNewGamePost)
+	e.POST("/api/webjepws", handleWebjepWebsocketGet)
 
 	e.Logger.Fatal(e.Start(":8000"))
 }

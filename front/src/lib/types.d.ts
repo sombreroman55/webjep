@@ -22,13 +22,17 @@ export interface FinalRound {
 
 export interface Game {
   rounds: Round[];
-  finalRound: FinalRound;
+  finalRound?: FinalRound;
 }
 
 export interface GameSettings {
+  playFinalJep: boolean;
   baseClueValue: number;
+  interClueInterval: number;
+  interRoundMultiplier: number;
   numberOfRounds: number;
-  // TODO: Add more settings as we think of them
+  categoriesPerRound: number;
+  cluesPerCategory: number;
 }
 
 export interface Session {

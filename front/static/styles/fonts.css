@@ -1,0 +1,26 @@
+@font-face {
+  font-family: itc korinna;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local('ITC Korinna'),
+    url('/fonts/korinna/itc.woff') format('woff');
+}
+
+@font-face {
+  font-family: itc korinna std;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local('ITC Korinna Std'),
+    url('/fonts/korinna/itc-std.woff') format('woff');
+}
+
+@font-face {
+  font-family: itc korinna lt;
+  font-style: normal;
+  font-weight: 700;
+  src:
+    local('ITC Korinna LT'),
+    url('/fonts/korinna/itc-lt.woff') format('woff');
+}

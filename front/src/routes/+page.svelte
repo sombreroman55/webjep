@@ -3,5 +3,5 @@
 <div style="display:flex; flex-direction:column">
 <a href="/new-game">make new online game</a>
 <a href="/local-game">make new local game</a>
-<a href="/clue-builder">clue builder</a>
+<a href="/game-builder">game builder</a>
 </div>

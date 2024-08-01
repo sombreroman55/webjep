@@ -19,13 +19,46 @@
 	}
 </script>
 
-<div class="jep-blue" on:click={revealAnswer}>
-	<p>{clue.question}</p>
+<div class="clue box-center-v shadow jep-blue" on:click={revealAnswer}>
+	<p>{clue.question.toUpperCase()}</p>
 	{#if showAnswer}
 		<hr />
-		<p>{clue.answer}</p>
+		<p>{clue.answer.toUpperCase()}</p>
 	{/if}
 </div>
 
 <style>
+  @font-face {
+    font-family: 'itc';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/korinna/itc.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'itc-std';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/korinna/itc-std.woff') format('woff');
+  }
+
+  @font-face {
+    font-family: 'itc-lt';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/korinna/itc-lt.woff') format('woff');
+  }
+
+  hr {
+    color: white;
+  }
+
+  .clue {
+    font-family: 'itc';
+    font-size: 72px;
+    text-align: center;
+    color: white;
+    width: 100%;
+    height: 100%;
+  }
 </style>

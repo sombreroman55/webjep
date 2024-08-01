@@ -1,32 +1,47 @@
 <script lang="ts">
 	import type { Game, Round, Player } from '$lib/types';
 	import BoardView from './BoardView.svelte';
+	import FinalRoundView from './FinalRoundView.svelte';
+	import GameOverView from './GameOverView.svelte';
 	import PlayerBarView from './PlayerBarView.svelte';
 
 	export let game: Game;
 	export let players: Player[];
-	let finalRound: boolean = false;
+	let finalRound = false;
+	let allCluesUsed = false;
+	let gameOver = false;
 	let roundNum = 0;
-	let round: Round = game.rounds[0];
+	let round: Round = game.rounds[roundNum];
 
-	$: if (noCluesLeft()) {
+	$: allCluesUsed = round.categories.every((c) => c.clues.every((q) => q.answered));
+	$: if (allCluesUsed) {
+		console.log('All clues used!');
 		nextRound();
-	}
-
-	function noCluesLeft(): boolean {
-      return round.categories.every(c => (c.clues.every(q => q.answered)));
+	} else {
+		console.log('Is this getting called????');
 	}
 
 	function nextRound() {
 		roundNum++;
-		if (roundNum < 2) round = game.rounds[roundNum];
-		else finalRound = true;
+		console.log(roundNum);
+		if (roundNum < game.rounds.length) {
+			round = game.rounds[roundNum];
+		} else {
+			if (game.finalRound) {
+				finalRound = true;
+			} else {
+              gameOver = true;
+			}
+		}
 	}
+
 </script>
 
 <div class="game-view">
-	{#if !finalRound}
-		<BoardView {round} />
+	{#if gameOver}
+		<GameOverView winner={players.reduce((winner, player) => winner.score > player.score ? winner : player)} />
+	{:else if game.finalRound && finalRound}
+		<FinalRoundView clue={game.finalRound} />
 	{:else}
 		<BoardView {round} />
 	{/if}
@@ -35,9 +50,9 @@
 
 <style>
 	.game-view {
-        width: 98vw;
-        height: 98vh;
+		width: 100vw;
+		height: 100vh;
 		display: grid;
-		grid-template-rows: 4fr 1fr;
+		grid-template-rows: 80% 20%;
 	}
 </style>

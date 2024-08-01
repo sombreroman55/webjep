@@ -9,8 +9,8 @@ const defaultClue: Clue = {
 
 export const currentClue = writable(defaultClue);
 export const clueActive = writable(false);
+export const currentPlayer = writable();
 
 export function resetClue() {
-    currentClue.set(defaultClue);
     clueActive.set(false);
 }

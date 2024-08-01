@@ -17,6 +17,10 @@ const config = {
       precompress: false,
       strict: true
     })
+  },
+
+  csrf: {
+    checkOrigin: false
   }
 };
 
