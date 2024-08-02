@@ -4,24 +4,44 @@ import (
 	"encoding/json"
 	"net/http"
 
-	_ "github.com/google/uuid"
+	"github.com/google/uuid"
 	_ "github.com/gorilla/websocket"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	log "github.com/sirupsen/logrus"
 )
 
+type ServerSession struct {
+	id       uuid.UUID
+	gameData Session
+}
+
+func newServerSession(id uuid.UUID, data Session) *ServerSession {
+	return &ServerSession{
+		id: id,
+		gameData: data,
+	}
+}
+
+var liveGames map[uuid.UUID]*ServerSession
+
 func handleNewGamePost(c echo.Context) error {
 	log.Info("Got new game POST")
-	m := make(map[string]interface{})
-	err := json.NewDecoder(c.Request().Body).Decode(&m)
+	var session Session
+	err := json.NewDecoder(c.Request().Body).Decode(&session)
 	if err != nil {
+		log.Error(err)
 		return err
 	} else {
-		for k, v := range m {
-			log.Infof("%v: %v\n", k, v)
-		}
+		log.Info(session)
 	}
+
+	gameId := uuid.New()
+	servSession := newServerSession(gameId, session)
+
+	// TODO: Set user cookies
+	// TODO: Redirect user to game page with game ID
+	// TODO: Tell them to distribute the link on the front end
 
 	return c.String(http.StatusOK, "Thanks for the form!")
 }

@@ -4,8 +4,6 @@
 
 ### Clue Builder
 - Style
-- Template file download
-- Form validation
 - Start game with newly generated clues directly
 
 ### Local Game
@@ -19,12 +17,10 @@
 
 ### Widgets
 - Style
-- Expand $ clue to full screen ClueView
 - Video/Name canvas; draw name like in MS Paint
 - Countdown timer bar
 
 ## Backend
-- Handle game form
 - Validate game form
 - Create new game room
 - Add player cookie

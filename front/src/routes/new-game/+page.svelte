@@ -28,9 +28,9 @@
 <div>
 	<nav>
 		<a href="/">home</a>
-		<a href="/clue-builder">clue builder</a>
+		<a href="/game-builder">game builder</a>
 		<a href="/local-game">new local game</a>
-		<a href="/game">new online game</a>
+		<a href="/new-game">new online game</a>
 	</nav>
 
 	<h1>online game</h1>

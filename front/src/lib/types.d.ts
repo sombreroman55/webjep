@@ -44,5 +44,5 @@ export interface Player {
   name: string;
   score: number;
   isHost: boolean;
-  videoEnabled: boolean;
+  mediaEnabled: boolean;
 }

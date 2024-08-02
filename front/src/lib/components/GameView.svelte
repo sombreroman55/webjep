@@ -53,6 +53,6 @@
 		width: 100vw;
 		height: 100vh;
 		display: grid;
-		grid-template-rows: 80% 20%;
+		grid-template-rows: 2fr 1fr;
 	}
 </style>
