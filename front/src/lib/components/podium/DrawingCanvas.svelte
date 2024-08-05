@@ -1,8 +1,7 @@
 <script lang="ts">
-  // TODO: Implement this
+	// TODO: Implement this
 </script>
 
 <div>
-  <canvas>
-  </canvas>
+	<canvas> </canvas>
 </div>

@@ -2,7 +2,7 @@
 	import { redirect } from '@sveltejs/kit';
 
 	async function sendClues() {
-      console.log("Calling send clues");
+		console.log('Calling send clues');
 		const files = (<HTMLInputElement>document.getElementById('onlineLoad')).files;
 		if (!files || files.length == 0) {
 			// TODO: Do something
@@ -21,7 +21,7 @@
 			body: text
 		});
 
-      console.log(response);
+		console.log(response);
 	}
 </script>
 

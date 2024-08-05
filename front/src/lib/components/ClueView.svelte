@@ -28,37 +28,37 @@
 </div>
 
 <style>
-  @font-face {
-    font-family: 'itc';
-    font-style: normal;
-    font-weight: 700;
-    src: url('/fonts/korinna/itc.woff') format('woff');
-  }
+	@font-face {
+		font-family: 'itc';
+		font-style: normal;
+		font-weight: 700;
+		src: url('/fonts/korinna/itc.woff') format('woff');
+	}
 
-  @font-face {
-    font-family: 'itc-std';
-    font-style: normal;
-    font-weight: 700;
-    src: url('/fonts/korinna/itc-std.woff') format('woff');
-  }
+	@font-face {
+		font-family: 'itc-std';
+		font-style: normal;
+		font-weight: 700;
+		src: url('/fonts/korinna/itc-std.woff') format('woff');
+	}
 
-  @font-face {
-    font-family: 'itc-lt';
-    font-style: normal;
-    font-weight: 700;
-    src: url('/fonts/korinna/itc-lt.woff') format('woff');
-  }
+	@font-face {
+		font-family: 'itc-lt';
+		font-style: normal;
+		font-weight: 700;
+		src: url('/fonts/korinna/itc-lt.woff') format('woff');
+	}
 
-  hr {
-    color: white;
-  }
+	hr {
+		color: white;
+	}
 
-  .clue {
-    font-family: 'itc';
-    font-size: 72px;
-    text-align: center;
-    color: white;
-    width: 100%;
-    height: 100%;
-  }
+	.clue {
+		font-family: 'itc';
+		font-size: 72px;
+		text-align: center;
+		color: white;
+		width: 100%;
+		height: 100%;
+	}
 </style>

@@ -5,18 +5,18 @@
 	import { currentClue, clueActive } from '$lib/gameStore';
 
 	export let round: Round;
-    const gridStyle = `display:grid; grid-template-columns: repeat(${round.categories.length}, 1fr);`;
+	const gridStyle = `display:grid; grid-template-columns: repeat(${round.categories.length}, 1fr);`;
 </script>
 
 <div>
 	{#if $clueActive}
 		<ClueView clue={$currentClue} />
 	{:else}
-    <div class="game-board" style={gridStyle}>
-		{#each round.categories as category}
-			<CategoryView {category} />
-		{/each}
-  </div>
+		<div class="game-board" style={gridStyle}>
+			{#each round.categories as category}
+				<CategoryView {category} />
+			{/each}
+		</div>
 	{/if}
 </div>
 

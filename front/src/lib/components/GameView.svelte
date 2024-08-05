@@ -30,16 +30,17 @@
 			if (game.finalRound) {
 				finalRound = true;
 			} else {
-              gameOver = true;
+				gameOver = true;
 			}
 		}
 	}
-
 </script>
 
 <div class="game-view">
 	{#if gameOver}
-		<GameOverView winner={players.reduce((winner, player) => winner.score > player.score ? winner : player)} />
+		<GameOverView
+			winner={players.reduce((winner, player) => (winner.score > player.score ? winner : player))}
+		/>
 	{:else if game.finalRound && finalRound}
 		<FinalRoundView clue={game.finalRound} />
 	{:else}

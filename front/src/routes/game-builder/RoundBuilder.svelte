@@ -7,8 +7,8 @@
 </script>
 
 <div>
-  <h2>Round {roundNumber}</h2>
-  {#each round.categories as category, i}
-    <CategoryBuilder category={category} roundNumber={roundNumber} categoryNumber={i+1} />
-  {/each}
+	<h2>Round {roundNumber}</h2>
+	{#each round.categories as category, i}
+		<CategoryBuilder {category} {roundNumber} categoryNumber={i + 1} />
+	{/each}
 </div>

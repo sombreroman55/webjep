@@ -42,6 +42,8 @@ type GameSettings struct {
 type Session struct {
 	Game     Game         `json:"game"`
 	Settings GameSettings `json:"settings"`
+	players  []*Player
+	state    GameState
 }
 
 func computeClueValues(session *Session) {
@@ -58,4 +60,12 @@ func computeClueValues(session *Session) {
 			}
 		}
 	}
+}
+
+func (session *Session) startGame() {
+
+}
+
+func (session *Session) addPlayer(player *Player) {
+	session.players = append(session.players, player)
 }
