@@ -20,7 +20,7 @@ export interface FinalRound {
 	answer: string;
 }
 
-export interface Game {
+export interface GameData {
 	rounds: Round[];
 	finalRound?: FinalRound;
 }
@@ -36,7 +36,7 @@ export interface GameSettings {
 }
 
 export interface Session {
-	game: Game;
+	data: GameData;
 	settings: GameSettings;
 }
 

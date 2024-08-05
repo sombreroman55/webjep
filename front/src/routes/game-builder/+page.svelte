@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
 	import GameBuilder from './GameBuilder.svelte';
-	import type { Game, GameSettings, Session } from '$lib/types';
+	import type { GameData, GameSettings, Session } from '$lib/types';
 	import { newGame } from '$lib/utils';
 
 	let numRoundsPerGame = 2;
@@ -27,9 +27,9 @@
 			categoriesPerRound: numCategoriesPerRound,
 			cluesPerCategory: numCluesPerCategory
 		};
-		let innerGame: Game = newGame(settings);
+		let innerGame: GameData = newGame(settings);
 		session = {
-			game: innerGame,
+			data: innerGame,
 			settings: settings
 		};
 		showSplash = false;

@@ -1,6 +1,6 @@
 import { writable } from 'svelte/store';
 import { browser } from '$app/environment';
-import type { Clue, Game } from '$lib/types';
+import type { Clue, GameData } from '$lib/types';
 
 const defaultClue: Clue = {
 	question: '',
@@ -8,11 +8,11 @@ const defaultClue: Clue = {
 	value: 0
 };
 
-const defaultGame: Game = {
+const defaultGame: GameData = {
 	rounds: []
 };
 
-export const currentGame = writable<Game>(
+export const currentGame = writable<GameData>(
 	(browser && JSON.parse(localStorage.getItem('currentGame'))) || defaultGame
 );
 export const currentClue = writable(defaultClue);

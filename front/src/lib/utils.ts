@@ -1,6 +1,6 @@
-import type { Clue, Category, Round, FinalRound, Game, GameSettings } from '$lib/types';
+import type { Clue, Category, Round, FinalRound, GameData, GameSettings } from '$lib/types';
 
-export function newGame(settings: GameSettings): Game {
+export function newGame(settings: GameSettings): GameData {
 	const rounds: Round[] = [];
 	for (let i = 0; i < settings.numberOfRounds; i++) {
 		const categories: Category[] = [];
@@ -25,7 +25,7 @@ export function newGame(settings: GameSettings): Game {
 		rounds.push(round);
 	}
 
-	const game: Game = {
+	const game: GameData = {
 		rounds: rounds
 	};
 
